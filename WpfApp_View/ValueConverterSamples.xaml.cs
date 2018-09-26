@@ -37,6 +37,7 @@ namespace WpfApp_View
 			listOurData = new ObservableCollection<TwoInts>();
 			listOurData.Add(new TwoInts { Value1 = 1, Value2 = 2, Index = 0 });
 			listOurData.Add(new TwoInts { Value1 = 29, Value2 = 69, Index = 1 });
+			listOurData.Add(new TwoInts { Value1 = 3, Value2 = 0, Index = 2 });
 		}
 	}
 
@@ -83,6 +84,26 @@ namespace WpfApp_View
 				return "Green";
 			else
 				return "Red";
+		}
+
+		public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+		{
+			return -1;
+		}
+	}
+
+	public class MyTwoIntsDiffColorSelector : IValueConverter
+	{
+		public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+		{
+			// Getting at the properties of 'value' takes a couple of steps.
+			int itemValue1 = (int)value.GetType().GetProperty("Value1").GetValue(value, null);
+			int itemValue2 = (int)value.GetType().GetProperty("Value2").GetValue(value, null);
+
+			if (itemValue1 <= itemValue2)
+				return "LightGoldenrodYellow";
+			else
+				return "LightBlue";
 		}
 
 		public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

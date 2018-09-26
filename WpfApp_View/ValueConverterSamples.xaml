@@ -12,6 +12,7 @@
     <Window.Resources>
         <local:MyTwoIntsAdder x:Key="TheNameOfMyTwoIntsAdder"/>
         <local:MyTwoIntsColorSelector x:Key="TheNameOfMyColorSelector"/>
+        <local:MyTwoIntsDiffColorSelector x:Key="TheNameOfMyDiffColorSelector"/>
     </Window.Resources>
     <Grid>
         <StackPanel>
@@ -38,6 +39,11 @@
                         </GridViewColumn>
                     </GridView>
                 </ListView.View>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Background" Value="{Binding Path=., Converter={StaticResource TheNameOfMyDiffColorSelector}}"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
             </ListView>
         </StackPanel>
     </Grid>
