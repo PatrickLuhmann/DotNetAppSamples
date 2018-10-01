@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp_View"
         mc:Ignorable="d"
+        x:Name="ThisWindow"
         Title="ValueConverterSamples" Height="450" Width="800">
     <Window.DataContext>
         <local:ValueConverter_ViewModel/>
@@ -13,6 +14,9 @@
         <local:MyTwoIntsAdder x:Key="TheNameOfMyTwoIntsAdder"/>
         <local:MyTwoIntsColorSelector x:Key="TheNameOfMyColorSelector"/>
         <local:MyTwoIntsDiffColorSelector x:Key="TheNameOfMyDiffColorSelector"/>
+        <local:MySimple18Converter x:Key="TheNameOfMy18Converter"/>
+        <local:MyMultiAdder x:Key="TheNameOfMyMultiAdder"/>
+        <local:MyMultiBackgroundConverter x:Key="TheNameOfMyMultiBackgroundConverter"/>
     </Window.Resources>
     <Grid>
         <StackPanel>
@@ -45,6 +49,62 @@
                     </Style>
                 </ListView.ItemContainerStyle>
             </ListView>
+            
+            <!-- Dynamic version -->
+            <TextBlock>This sample has dynamic data.</TextBlock>
+            <ListView Name="DynamicListOfTwoInts" ItemsSource="{Binding ListOurData}">
+                <ListView.View>
+                    <GridView AllowsColumnReorder="true"			
+                              ColumnHeaderToolTip="Data Columns">
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Value1}" 
+                                        Header="First Value" Width="Auto"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Value2}" 
+                                        Header="Second Value" Width="Auto"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=., Converter={StaticResource TheNameOfMyTwoIntsAdder}}"
+                                        Header="Sum" Width="Auto"/>
+                        <GridViewColumn Header="Sum (Odd -> Green">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Path=., Converter={StaticResource TheNameOfMyTwoIntsAdder}}">
+                                            <TextBlock.Foreground>
+                                                <MultiBinding Converter="{StaticResource TheNameOfMyMultiAdder}">
+                                                    <Binding Path="."/>
+                                                    <Binding Path="DataContext.ListOurData" ElementName="ThisWindow"/>
+                                                </MultiBinding>
+                                            </TextBlock.Foreground>
+                                            <TextBlock.FontSize>
+                                                <Binding Converter="{StaticResource TheNameOfMy18Converter}"/>
+                                            </TextBlock.FontSize>
+                                        </TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <!--
+                        <Setter Property="Background" Value="{Binding Path=., Converter={StaticResource TheNameOfMyDiffColorSelector}}"/>
+                        -->
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <MultiBinding Converter="{StaticResource TheNameOfMyMultiBackgroundConverter}">
+                                    <Binding Path="."/>
+                                    <!-- This is required for it to work, has something to do with the notify in
+                                         the Increase/Decrease methods. -->
+                                    <Binding Path="DataContext.ListOurData" ElementName="ThisWindow"/>
+                                </MultiBinding>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+            <StackPanel Orientation="Horizontal">
+                <Button Click="clickIncrease_Button">Increase</Button>
+                <Button Click="clickDecrease_Button">Decrease</Button>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>
