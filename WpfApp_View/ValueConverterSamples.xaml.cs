@@ -211,39 +211,13 @@ namespace WpfApp_View
 				else
 					return Brushes.Red;
 			}
-#if false
-			if (values[1].GetType().Name == typeof(ObservableCollection<>).Name)
+			else if (values[0].GetType().Name == typeof(ObservableCollection<>).Name)
 			{
-				int myIdx = (int)values[0].GetType().GetProperty("Index").GetValue(values[0], null);
-				System.Diagnostics.Debug.WriteLine("  My index is: {0}", myIdx);
-
-				int accum = 0;
-				ObservableCollection<TwoInts> theList = (ObservableCollection<TwoInts>)values[1];
-				for (int i = 0; i < theList.Count; i++)
-				{
-					accum += theList[i].Value2;
-					if (i == myIdx)
-						break;
-				}
-
-				//return accum.ToString();
-				if ((myIdx & 0x1) == 1)
-					return Brushes.Gray;
-				else
-					return Brushes.Cyan;
+				int val1 = (int)values[1].GetType().GetProperty("Value1").GetValue(values[1], null);
+				int val2 = (int)values[1].GetType().GetProperty("Value2").GetValue(values[1], null);
+				return (val1 + val2).ToString();
 			}
-#endif
-#if false
-			string one = values[0] as string;
-			string two = values[1] as string;
-			string three = values[2] as string;
-			if (!string.IsNullOrEmpty(one) && !string.IsNullOrEmpty(two) && !string.IsNullOrEmpty(three))
-			{
-				return one + two + three;
-			}
-			return null;
-#endif
-			return Brushes.Blue;
+			return 0;
 		}
 
 		public object[] ConvertBack(object value, Type[] targetTypes, object parameter, System.Globalization.CultureInfo culture)
