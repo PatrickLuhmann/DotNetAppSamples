@@ -30,5 +30,11 @@ namespace WpfApp_View
 			var wnd = new ValueConverterSamples();
 			wnd.Show();
 		}
+
+		private void clickStyleSamples_Button(object sender, RoutedEventArgs e)
+		{
+			var wnd = new StyleSamples();
+			wnd.Show();
+		}
 	}
 }

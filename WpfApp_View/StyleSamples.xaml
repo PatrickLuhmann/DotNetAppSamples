@@ -1,0 +1,79 @@
+﻿<Window x:Class="WpfApp_View.StyleSamples"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp_View"
+        mc:Ignorable="d"
+        Title="StyleSamples" Height="450" Width="800">
+    <Window.Resources>
+        <!-- As expected, this style affects everything in this Window. -->
+        <!-- If you want a style to affect the entire application, put it in app.xaml. -->
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="AliceBlue"/>
+        </Style>
+        <!-- If you give it a "name" it will only be used if explicitly chosen. -->
+        <Style x:Key="PinkBackground" TargetType="Button">
+            <Setter Property="Background" Value="HotPink"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="Yellow"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <StackPanel>
+            <TextBlock>These are samples showing the use of styles.</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Width="400">
+                    <!-- This defines a style for all controls of TargetType in the scope of this StackPanel. -->
+                    <StackPanel.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Foreground" Value="Red"/>
+                            <Setter Property="FontSize" Value="18"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <TextBlock>Panel A</TextBlock>
+                    <TextBlock Foreground="DarkOliveGreen">I still control my own destiny</TextBlock>
+                    <TextBlock Text="Local control-specific style">
+                        <!-- This is probably rarely used. -->
+                        <TextBlock.Style>
+                            <Style>
+                                <Setter Property="TextBlock.FontFamily" Value="Arial Black"/>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                    <Button>See my button, like my button</Button>
+                    <Button Style="{StaticResource PinkBackground}" Content="Ready for the go-go!">
+                    </Button>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox Name="checkbox1" Content="Go Green!"/>
+                        <TextBlock>
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Background" Value="LightGray"/>
+                                    <Setter Property="Text" Value="Go White!"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=checkbox1, Path=IsChecked}" Value="True">
+                                            <Setter Property="Foreground" Value="Green"/>
+                                            <Setter Property="Text" Value="Go Green!"/>
+                                        </DataTrigger>
+                                        
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Width="400">
+                    <TextBlock>Panel B</TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp_View", "WpfApp_View\WpfApp_View.csproj", "{76798934-E462-4140-9A9B-3F5425C29EEA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModels", "ViewModels\ViewModels.csproj", "{BF112957-137A-49EF-B9D3-2525E6AC7EB9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,18 @@ Global
 		{76798934-E462-4140-9A9B-3F5425C29EEA}.Release|x64.Build.0 = Release|Any CPU
 		{76798934-E462-4140-9A9B-3F5425C29EEA}.Release|x86.ActiveCfg = Release|Any CPU
 		{76798934-E462-4140-9A9B-3F5425C29EEA}.Release|x86.Build.0 = Release|Any CPU
+		{BF112957-137A-49EF-B9D3-2525E6AC7EB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF112957-137A-49EF-B9D3-2525E6AC7EB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF112957-137A-49EF-B9D3-2525E6AC7EB9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BF112957-137A-49EF-B9D3-2525E6AC7EB9}.Debug|x64.Build.0 = Debug|Any CPU
+		{BF112957-137A-49EF-B9D3-2525E6AC7EB9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BF112957-137A-49EF-B9D3-2525E6AC7EB9}.Debug|x86.Build.0 = Debug|Any CPU
+		{BF112957-137A-49EF-B9D3-2525E6AC7EB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF112957-137A-49EF-B9D3-2525E6AC7EB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF112957-137A-49EF-B9D3-2525E6AC7EB9}.Release|x64.ActiveCfg = Release|Any CPU
+		{BF112957-137A-49EF-B9D3-2525E6AC7EB9}.Release|x64.Build.0 = Release|Any CPU
+		{BF112957-137A-49EF-B9D3-2525E6AC7EB9}.Release|x86.ActiveCfg = Release|Any CPU
+		{BF112957-137A-49EF-B9D3-2525E6AC7EB9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

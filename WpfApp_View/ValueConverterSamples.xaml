@@ -4,19 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp_View"
+        xmlns:vms="clr-namespace:ViewModels;assembly=ViewModels"
         mc:Ignorable="d"
         x:Name="ThisWindow"
         Title="ValueConverterSamples" Height="450" Width="800">
     <Window.DataContext>
-        <local:ValueConverter_ViewModel/>
+        <vms:ValueConverter_VM/>
     </Window.DataContext>
     <Window.Resources>
-        <local:MyTwoIntsAdder x:Key="TheNameOfMyTwoIntsAdder"/>
-        <local:MyTwoIntsColorSelector x:Key="TheNameOfMyColorSelector"/>
-        <local:MyTwoIntsDiffColorSelector x:Key="TheNameOfMyDiffColorSelector"/>
-        <local:MySimple18Converter x:Key="TheNameOfMy18Converter"/>
-        <local:MyMultiAdder x:Key="TheNameOfMyMultiAdder"/>
-        <local:MyMultiBackgroundConverter x:Key="TheNameOfMyMultiBackgroundConverter"/>
+        <vms:MyTwoIntsAdder x:Key="TheNameOfMyTwoIntsAdder"/>
+        <vms:MyTwoIntsColorSelector x:Key="TheNameOfMyColorSelector"/>
+        <vms:MyTwoIntsDiffColorSelector x:Key="TheNameOfMyDiffColorSelector"/>
+        <vms:MySimple18Converter x:Key="TheNameOfMy18Converter"/>
+        <vms:MyMultiAdder x:Key="TheNameOfMyMultiAdder"/>
+        <vms:MyMultiBackgroundConverter x:Key="TheNameOfMyMultiBackgroundConverter"/>
     </Window.Resources>
     <Grid>
         <StackPanel>
@@ -49,7 +50,7 @@
                     </Style>
                 </ListView.ItemContainerStyle>
             </ListView>
-            
+
             <!-- Dynamic version -->
             <TextBlock>This sample has dynamic data.</TextBlock>
             <ListView Name="DynamicListOfTwoInts" ItemsSource="{Binding ListOurData}">
