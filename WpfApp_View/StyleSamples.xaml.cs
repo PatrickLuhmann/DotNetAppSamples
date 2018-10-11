@@ -24,4 +24,42 @@ namespace WpfApp_View
             InitializeComponent();
         }
     }
+
+	public class NegativeColorSelector : IValueConverter
+	{
+		public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+		{
+			// Getting at the properties of 'value' takes a couple of steps.
+			int itemValue1 = (int)value;
+
+			if (itemValue1 < 0)
+				return "Red";
+			else
+				return "Black";
+		}
+
+		public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+		{
+			throw new NotSupportedException("ConvertBack not supported");
+		}
+	}
+
+	public class NegativeTextSelector : IValueConverter
+	{
+		public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+		{
+			// Getting at the properties of 'value' takes a couple of steps.
+			int itemValue1 = (int)value;
+
+			if (itemValue1 < 0)
+				return "(" + (itemValue1 * -1).ToString() + ")";
+			else
+				return itemValue1.ToString();
+		}
+
+		public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+		{
+			throw new NotSupportedException("ConvertBack not supported");
+		}
+	}
 }
