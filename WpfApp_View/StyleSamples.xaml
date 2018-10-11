@@ -98,11 +98,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock>First</TextBlock>
-                                    <TextBlock Text="{Binding}"/>
-                                    <TextBlock Text="{Binding ElementName=StyleSamplesWindow, Path=DataContext.SomeText}"/>
                                     <TextBlock Text="{Binding Converter={StaticResource MyNegativeTextSelector}}"/>
-                                    <TextBlock Text="Last"/>
                                 </StackPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -116,7 +112,14 @@
                                 <!-- This column is tricky because it needs to go outside the (implicit?) DataContext of the ListView,
                                      which is from ItemsSource. -->
                                 <GridViewColumn Header="One" DisplayMemberBinding="{Binding ElementName=StyleSamplesWindow, Path=DataContext.SomeText}"/>
-                                <GridViewColumn Header="Two" DisplayMemberBinding="{Binding}"/>
+                                <GridViewColumn Header="One'">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding ElementName=StyleSamplesWindow, Path=DataContext.SomeText}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Two" DisplayMemberBinding="{Binding Converter={StaticResource MyNegativeTextSelector}}"/>
                                 <!-- This column is tricky because it wants to use a StaticResource, which can't be directly assigned to
                                      DisplayMemberBinding. Instead, need to define the DataTemplate so we can get to a TextBlock.Text property. -->
                                 <GridViewColumn Header="Three">
