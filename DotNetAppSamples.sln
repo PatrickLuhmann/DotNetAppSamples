@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp_View", "WpfApp_View\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModels", "ViewModels\ViewModels.csproj", "{BF112957-137A-49EF-B9D3-2525E6AC7EB9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest_Views", "UnitTest_Views\UnitTest_Views.csproj", "{EC41D8F1-E886-447D-BDCA-0A883AB29912}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,18 @@ Global
 		{BF112957-137A-49EF-B9D3-2525E6AC7EB9}.Release|x64.Build.0 = Release|Any CPU
 		{BF112957-137A-49EF-B9D3-2525E6AC7EB9}.Release|x86.ActiveCfg = Release|Any CPU
 		{BF112957-137A-49EF-B9D3-2525E6AC7EB9}.Release|x86.Build.0 = Release|Any CPU
+		{EC41D8F1-E886-447D-BDCA-0A883AB29912}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC41D8F1-E886-447D-BDCA-0A883AB29912}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC41D8F1-E886-447D-BDCA-0A883AB29912}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EC41D8F1-E886-447D-BDCA-0A883AB29912}.Debug|x64.Build.0 = Debug|Any CPU
+		{EC41D8F1-E886-447D-BDCA-0A883AB29912}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EC41D8F1-E886-447D-BDCA-0A883AB29912}.Debug|x86.Build.0 = Debug|Any CPU
+		{EC41D8F1-E886-447D-BDCA-0A883AB29912}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC41D8F1-E886-447D-BDCA-0A883AB29912}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC41D8F1-E886-447D-BDCA-0A883AB29912}.Release|x64.ActiveCfg = Release|Any CPU
+		{EC41D8F1-E886-447D-BDCA-0A883AB29912}.Release|x64.Build.0 = Release|Any CPU
+		{EC41D8F1-E886-447D-BDCA-0A883AB29912}.Release|x86.ActiveCfg = Release|Any CPU
+		{EC41D8F1-E886-447D-BDCA-0A883AB29912}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
