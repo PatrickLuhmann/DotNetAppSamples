@@ -39,6 +39,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command_VM.cs" />
     <Compile Include="MainWindow_VM.cs" />
     <Compile Include="StyleSample_VM.cs" />
     <Compile Include="ValueConverter_VM.cs" />

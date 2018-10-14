@@ -55,12 +55,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CommandSamples.xaml.cs">
+      <DependentUpon>CommandSamples.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StyleSamples.xaml.cs">
       <DependentUpon>StyleSamples.xaml</DependentUpon>
     </Compile>
     <Compile Include="ValueConverterSamples.xaml.cs">
       <DependentUpon>ValueConverterSamples.xaml</DependentUpon>
     </Compile>
+    <Page Include="CommandSamples.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

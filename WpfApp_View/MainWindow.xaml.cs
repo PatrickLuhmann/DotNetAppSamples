@@ -36,5 +36,11 @@ namespace WpfApp_View
 			var wnd = new StyleSamples();
 			wnd.Show();
 		}
+
+		private void clickCommandSamples_Button(object sender, RoutedEventArgs e)
+		{
+			var wnd = new CommandSamples();
+			wnd.Show();
+		}
 	}
 }
