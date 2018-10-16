@@ -13,9 +13,16 @@
     <Grid>
         <StackPanel>
             <StackPanel Orientation="Horizontal">
+                <TextBlock>Raw ICommand interface: </TextBlock>
                 <Button Command="{Binding ButtonOneACmd}" CommandParameter="{Binding}">Button 1A</Button>
-                <TextBlock Text="{Binding ButtonOne}"/>
+                <TextBlock Text="{Binding ButtonOneRaw}"/>
                 <Button Command="{Binding ButtonOneBCmd}" CommandParameter="{Binding}">Button 1B</Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>RelayCommand interface:</TextBlock>
+                <Button Command="{Binding RelayButtonOneACmd}">Button 1A</Button>
+                <TextBlock Text="{Binding ButtonOneRelay}"/>
+                <Button Command="{Binding RelayButtonOneBCmd}">Button 1B</Button>
             </StackPanel>
         </StackPanel>
     </Grid>

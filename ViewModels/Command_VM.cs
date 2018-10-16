@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,23 +13,51 @@ namespace ViewModels
 {
 	public class Command_VM : ViewModelBase
 	{
-		private string buttonOne;
-		public string ButtonOne
+		private string buttonOneRaw;
+		public string ButtonOneRaw
 		{
-			get { return buttonOne; }
+			get { return buttonOneRaw; }
 			set
 			{
-				buttonOne = value;
-				RaisePropertyChanged("ButtonOne");
+				buttonOneRaw = value;
+				RaisePropertyChanged("ButtonOneRaw");
 			}
 		}
 
 		public ICommand ButtonOneACmd { get { return new ButtonOneACommand(); } }
 		public ICommand ButtonOneBCmd { get { return new ButtonOneBCommand(); } }
 
+		private string buttonOneRelay;
+		public string ButtonOneRelay
+		{
+			get { return buttonOneRelay; }
+			set
+			{
+				buttonOneRelay = value;
+				RaisePropertyChanged("ButtonOneRelay");
+			}
+		}
+
+		public RelayCommand RelayButtonOneACmd { get; private set; }
+		public RelayCommand RelayButtonOneBCmd { get; private set; }
+
+		private void SetButtonOneHelloWorld()
+		{
+			ButtonOneRelay = "relayHello World";
+		}
+
+		private void SetButtonOneGoodbye()
+		{
+			ButtonOneRelay = "relayGoodbye City Life";
+		}
+
 		public Command_VM()
 		{
-			ButtonOne = "Click the buttons";
+			ButtonOneRaw = "Click the buttons";
+			ButtonOneRelay = "Click the buttons";
+
+			RelayButtonOneACmd = new RelayCommand(SetButtonOneHelloWorld);
+			RelayButtonOneBCmd = new RelayCommand(SetButtonOneGoodbye);
 		}
 	}
 
@@ -48,7 +77,7 @@ namespace ViewModels
 		{
 			Command_VM cvm = (Command_VM)parameter;
 			if (cvm != null)
-				cvm.ButtonOne = "Hello World";
+				cvm.ButtonOneRaw = "Hello World";
 		}
 	}
 
@@ -68,7 +97,7 @@ namespace ViewModels
 		{
 			Command_VM cvm = (Command_VM)parameter;
 			if (cvm != null)
-				cvm.ButtonOne = "Goodbye City Life";
+				cvm.ButtonOneRaw = "Goodbye City Life";
 		}
 	}
 }
