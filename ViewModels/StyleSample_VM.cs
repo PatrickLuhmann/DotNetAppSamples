@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ViewModels
 {
-	public class StyleSample_VM
+	public class StyleSample_VM : ViewModelBase
 	{
 		private ObservableCollection<int> theList;
 		public ObservableCollection<int> TheList {

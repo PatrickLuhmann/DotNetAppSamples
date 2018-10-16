@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Windows.Input;
 
 namespace ViewModels
 {
-	public class Command_VM : INotifyPropertyChanged
+	public class Command_VM : ViewModelBase
 	{
 		private string buttonOne;
 		public string ButtonOne
@@ -18,7 +19,7 @@ namespace ViewModels
 			set
 			{
 				buttonOne = value;
-				NotifyPropertyChanged("ButtonOne");
+				RaisePropertyChanged("ButtonOne");
 			}
 		}
 
@@ -28,15 +29,6 @@ namespace ViewModels
 		public Command_VM()
 		{
 			ButtonOne = "Click the buttons";
-		}
-
-		public event PropertyChangedEventHandler PropertyChanged;
-		private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-		{
-			if (PropertyChanged != null)
-			{
-				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 

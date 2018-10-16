@@ -1,18 +1,11 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using System.ComponentModel;
+using GalaSoft.MvvmLight;
 
 namespace ViewModels
 {
-	public class MainWindow_VM : INotifyPropertyChanged
+	public class MainWindow_VM : ViewModelBase
 	{
-		public event PropertyChangedEventHandler PropertyChanged;
-		private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-		{
-			if (PropertyChanged != null)
-			{
-				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
 	}
 }

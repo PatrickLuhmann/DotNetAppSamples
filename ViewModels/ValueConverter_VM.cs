@@ -6,10 +6,11 @@ using System.Windows.Data;
 using System.Reflection;
 using System.Windows.Media;
 using System.Linq;
+using GalaSoft.MvvmLight;
 
 namespace ViewModels
 {
-	public class ValueConverter_VM : INotifyPropertyChanged
+	public class ValueConverter_VM : ViewModelBase
 	{
 		private ObservableCollection<TwoInts> listOurData;
 		public ObservableCollection<TwoInts> ListOurData
@@ -21,13 +22,13 @@ namespace ViewModels
 		public void Increase()
 		{
 			listOurData[0].Value1++;
-			NotifyPropertyChanged("ListOurData");
+			RaisePropertyChanged("ListOurData");
 		}
 
 		public void Decrease()
 		{
 			listOurData[0].Value1--;
-			NotifyPropertyChanged("ListOurData");
+			RaisePropertyChanged("ListOurData");
 		}
 
 		public ValueConverter_VM()
@@ -36,15 +37,6 @@ namespace ViewModels
 			listOurData.Add(new TwoInts { Value1 = 1, Value2 = 2, Index = 0 });
 			listOurData.Add(new TwoInts { Value1 = 29, Value2 = 69, Index = 1 });
 			listOurData.Add(new TwoInts { Value1 = 3, Value2 = 0, Index = 2 });
-		}
-
-		public event PropertyChangedEventHandler PropertyChanged;
-		private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-		{
-			if (PropertyChanged != null)
-			{
-				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 
