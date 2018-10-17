@@ -42,5 +42,11 @@ namespace WpfApp_View
 			var wnd = new CommandSamples();
 			wnd.Show();
 		}
+
+		private void clickNutritionSample_Button(object sender, RoutedEventArgs e)
+		{
+			var wnd = new NutritionSample();
+			wnd.Show();
+		}
 	}
 }

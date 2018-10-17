@@ -2,7 +2,7 @@
 
 namespace Models.Migrations
 {
-    public partial class NutritionMigration_1 : Migration
+    public partial class Migration_1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

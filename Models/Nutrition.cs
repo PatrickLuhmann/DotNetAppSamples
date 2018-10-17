@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SQLitePCL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,17 @@ namespace Models
 		{
 			// The path is relative to the main assembly (.exe).
 			optionsBuilder.UseSqlite(@"Data Source=nutrition.db");
+
+			// I don't know why I need this. For some reason doing the Migration
+			// from Nutrition_VM() throws an exception. Research led me to
+			// https://stackoverflow.com/questions/40412992/cannot-run-sqlite-net-pcl-in-asp-net-mvc
+			// which had the following line as a possible solution.
+			// UnitTest_Models works fine without it, and I can't find any difference between
+			// the references of the two projects. The only thing I can think of is that
+			// I think I tried installing NuGet package Microsoft.EntityFrameworkCore instead
+			// of MS.EFC.Sqlite, thinking that the ViewModel didn't need all of the packages. I
+			// then added Sqlite but that apparently had no effect.
+			Batteries.Init();
 		}
 	}
 

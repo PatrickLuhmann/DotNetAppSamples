@@ -15,6 +15,7 @@
             <Button Click="clickValueConverterSamples_Button">View Converter Samples</Button>
             <Button Click="clickStyleSamples_Button">Style Samples</Button>
             <Button Click="clickCommandSamples_Button">Command Samples</Button>
+            <Button Click="clickNutritionSample_Button">Nutrition Sample</Button>
         </StackPanel>
     </Grid>
 </Window>

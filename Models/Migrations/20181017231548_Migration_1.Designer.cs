@@ -9,8 +9,8 @@ using Models;
 namespace Models.Migrations
 {
     [DbContext(typeof(NutritionContext))]
-    [Migration("20181017212546_NutritionMigration_1")]
-    partial class NutritionMigration_1
+    [Migration("20181017231548_Migration_1")]
+    partial class Migration_1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

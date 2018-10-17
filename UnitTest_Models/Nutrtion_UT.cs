@@ -8,7 +8,7 @@ using Models;
 namespace UnitTest_Models
 {
 	[TestClass]
-	public class Nutrtion
+	public class Nutrtion_UT
 	{
 		[ClassInitialize]
 		public static void CreateAndMigrateDatabase(TestContext context)
