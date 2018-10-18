@@ -43,6 +43,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\20181018034901_Nutrition_Migration_1.cs" />
+    <Compile Include="Migrations\20181018034901_Nutrition_Migration_1.designer.cs">
+      <DependentUpon>20181018034901_Nutrition_Migration_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\NutritionContextModelSnapshot.cs" />
     <Compile Include="Nutrition\Nutrition_Model.cs" />
   </ItemGroup>
   <ItemGroup>
