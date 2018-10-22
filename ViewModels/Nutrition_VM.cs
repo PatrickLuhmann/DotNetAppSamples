@@ -13,7 +13,25 @@ namespace ViewModels
 	public class Nutrition_VM : ViewModelBase
 	{
 		public string GreetingMessage { get; private set; }
-		public ObservableCollection<FoodItem_VM> FoodItems { get; set; }
+		public ObservableCollection<FoodItem_VM> FoodItems {
+			get
+			{
+				ObservableCollection<FoodItem_VM> items = new ObservableCollection<FoodItem_VM>();
+				using (var db = new NutritionContext())
+				{
+					List<FoodItem> res = db.FoodItems.ToList();
+					foreach (FoodItem fi in res)
+					{
+						items.Add(new FoodItem_VM { TheFoodItem = fi });
+					}
+				}
+				return items;
+			}
+			private set
+			{
+				// This should not be needed.
+			}
+		}
 
 		public void AddFoodItem()
 		{
@@ -31,6 +49,7 @@ namespace ViewModels
 				db.FoodItems.Add(food);
 				db.SaveChanges();
 			}
+			RaisePropertyChanged("FoodItems");
 		}
 
 		public Nutrition_VM()
@@ -43,18 +62,6 @@ namespace ViewModels
 			using (var db = new NutritionContext())
 			{
 				db.Database.Migrate();
-			}
-
-			using (var db = new NutritionContext())
-			{
-				ObservableCollection<FoodItem_VM> items = new ObservableCollection<FoodItem_VM>();
-				List<FoodItem> res = db.FoodItems.ToList();
-				foreach (FoodItem fi in res)
-				{
-					items.Add(new FoodItem_VM { TheFoodItem = fi });
-				}
-				FoodItems = items;
-				RaisePropertyChanged("FoodItems");
 			}
 		}
 	}
