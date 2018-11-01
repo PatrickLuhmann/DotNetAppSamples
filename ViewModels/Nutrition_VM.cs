@@ -30,6 +30,21 @@ namespace ViewModels
 			private set
 			{
 				// This should not be needed.
+				throw new NotImplementedException();
+			}
+		}
+
+		private FoodItem_VM selectedFoodItem;
+		public FoodItem_VM SelectedFoodItem
+		{
+			get
+			{
+				return selectedFoodItem;
+			}
+			set
+			{
+				selectedFoodItem = value;
+				RaisePropertyChanged("SelectedFoodItem");
 			}
 		}
 

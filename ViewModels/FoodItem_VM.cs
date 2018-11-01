@@ -1,13 +1,16 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Models;
+using System;
 using System.Collections.Generic;
+using GalaSoft.MvvmLight;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Models;
 
 namespace ViewModels
 {
-	public class FoodItem_VM
+	public class FoodItem_VM : ViewModelBase
 	{
 		public FoodItem TheFoodItem { get; set; }
 

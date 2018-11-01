@@ -10,19 +10,27 @@
     <Window.DataContext>
         <vmvm:Nutrition_VM/>
     </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate x:Key="FoodItemTemplate" >
+            <local:FoodItemView/>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
         <StackPanel>
             <TextBlock Text="{Binding GreetingMessage}"/>
             <StackPanel Orientation="Horizontal">
                 <Button Click="clickAddFoodItem_Button">Add Food Item</Button>
             </StackPanel>
-            <DataGrid AutoGenerateColumns="False"
-                      ItemsSource="{Binding FoodItems}">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding TheFoodItem.Name}" Header="Name"/>
-                    <DataGridTextColumn Binding="{Binding TheFoodItem.Brand}" Header="Brand"/>
-                </DataGrid.Columns>
-            </DataGrid>
+            <StackPanel Orientation="Horizontal">
+                <DataGrid AutoGenerateColumns="False"
+                      ItemsSource="{Binding FoodItems}" SelectedItem="{Binding SelectedFoodItem}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding TheFoodItem.Name}" Header="Name"/>
+                        <DataGridTextColumn Binding="{Binding TheFoodItem.Brand}" Header="Brand"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <ContentControl Content="{Binding SelectedFoodItem}" ContentTemplate="{StaticResource FoodItemTemplate}"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>
