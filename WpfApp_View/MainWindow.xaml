@@ -16,9 +16,8 @@
                 <Button Click="clickValueConverterSamples_Button">View Converter Samples</Button>
 
             </TabItem>
-            <TabItem Header="Style Samples">
-                <Button Click="clickStyleSamples_Button">Style Samples</Button>
-
+            <TabItem Header="Style UserControl Sample">
+                <local:StyleSample />
             </TabItem>
             <TabItem Header="Command Samples">
                 <Button Click="clickCommandSamples_Button">Command Samples</Button>

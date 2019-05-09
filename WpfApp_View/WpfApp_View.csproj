@@ -185,8 +185,8 @@
     <Compile Include="NutritionSample.xaml.cs">
       <DependentUpon>NutritionSample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StyleSamples.xaml.cs">
-      <DependentUpon>StyleSamples.xaml</DependentUpon>
+    <Compile Include="StyleSample.xaml.cs">
+      <DependentUpon>StyleSample.xaml</DependentUpon>
     </Compile>
     <Compile Include="ValueConverterSamples.xaml.cs">
       <DependentUpon>ValueConverterSamples.xaml</DependentUpon>
@@ -215,7 +215,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StyleSamples.xaml">
+    <Page Include="StyleSample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

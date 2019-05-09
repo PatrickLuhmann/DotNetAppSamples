@@ -10,21 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace WpfApp_View
 {
-    /// <summary>
-    /// Interaction logic for StyleSamples.xaml
-    /// </summary>
-    public partial class StyleSamples : Window
-    {
-        public StyleSamples()
-        {
-            InitializeComponent();
-        }
-    }
+	/// <summary>
+	/// Interaction logic for StyleSample.xaml
+	/// </summary>
+	public partial class StyleSample : UserControl
+	{
+		public StyleSample()
+		{
+			InitializeComponent();
+		}
+	}
 
+	// TODO: Can this code-behind go somewhere else? Or is this something the ViewModel should not know about
+	//       because it is specific to this particular View implementation? Or extract to separate file?
 	public class NegativeColorSelector : IValueConverter
 	{
 		public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
@@ -82,4 +85,5 @@ namespace WpfApp_View
 			throw new NotSupportedException("ConvertBack not supported");
 		}
 	}
+
 }
