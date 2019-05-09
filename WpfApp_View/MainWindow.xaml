@@ -11,11 +11,23 @@
         <vms:MainWindow_VM/>
     </Window.DataContext>
     <Grid>
-        <StackPanel>
-            <Button Click="clickValueConverterSamples_Button">View Converter Samples</Button>
-            <Button Click="clickStyleSamples_Button">Style Samples</Button>
-            <Button Click="clickCommandSamples_Button">Command Samples</Button>
-            <Button Click="clickNutritionSample_Button">Nutrition Sample</Button>
-        </StackPanel>
+        <TabControl>
+            <TabItem Header="Converter Samples">
+                <Button Click="clickValueConverterSamples_Button">View Converter Samples</Button>
+
+            </TabItem>
+            <TabItem Header="Style Samples">
+                <Button Click="clickStyleSamples_Button">Style Samples</Button>
+
+            </TabItem>
+            <TabItem Header="Command Samples">
+                <Button Click="clickCommandSamples_Button">Command Samples</Button>
+
+            </TabItem>
+            <TabItem Header="Nutrition Samples">
+                <Button Click="clickNutritionSample_Button">Nutrition Sample</Button>
+
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
