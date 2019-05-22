@@ -16,13 +16,33 @@
     <Grid>
         <StackPanel>
             <TextBlock Text="{Binding Greeting}"></TextBlock>
-            <TextBlock FontWeight="Bold">Musicians</TextBlock>
+            <TextBlock FontWeight="Bold">Music Acts</TextBlock>
             <TreeView ItemsSource="{Binding TopLevel}">
                 <TreeView.ItemTemplate>
-                    <HierarchicalDataTemplate DataType="{x:Type vms:Person}" ItemsSource="{Binding Children}" >
+                    <HierarchicalDataTemplate DataType="{x:Type vms:MusicAct}" ItemsSource="{Binding Members}" >
                         <TextBlock Text="{Binding Name}" />
                     </HierarchicalDataTemplate>
                 </TreeView.ItemTemplate>
+            </TreeView>
+            <TextBlock FontWeight="Bold">Styled Music Acts</TextBlock>
+            <TreeView ItemsSource="{Binding TopLevel}">
+                <TreeView.Resources>
+                    <HierarchicalDataTemplate DataType="{x:Type vms:MusicAct}" ItemsSource="{Binding Members}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock>
+                                <Run FontWeight="Bold" Text="{Binding Name}"/>
+                            </TextBlock>
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+                    <HierarchicalDataTemplate DataType="{x:Type vms:Musician}" ItemsSource="{Binding Acts}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock>
+                                <Run FontWeight="Bold" Text="{Binding Name}"/>
+                                <Run FontStyle="Italic" Text="{Binding Role}"/>
+                            </TextBlock>
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+                </TreeView.Resources>
             </TreeView>
         </StackPanel>
     </Grid>

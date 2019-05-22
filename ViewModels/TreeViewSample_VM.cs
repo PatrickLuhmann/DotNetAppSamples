@@ -10,8 +10,8 @@ namespace ViewModels
 	{
 		public string Greeting { get; private set; }
 
-		private List<Person> _topLevel = new List<Person>();
-		public List<Person> TopLevel
+		private List<MusicAct> _topLevel = new List<MusicAct>();
+		public List<MusicAct> TopLevel
 		{
 			get
 			{
@@ -27,32 +27,32 @@ namespace ViewModels
 		{
 			Greeting = "Hello, world!";
 
-			// Set up our "database" of Person objects.
-			Person LedZ = new Person("Led Zeppelin");
-			Person RobP = new Person("Robert Plant");
-			Person JimP = new Person("Jimmy Page");
-			LedZ.Children.Add(RobP);
-			LedZ.Children.Add(JimP);
-			Person Rem = new Person("R.E.M.");
-			Person MikeS = new Person("Michael Stipe");
-			Person MikeM = new Person("Mike Mills");
-			Rem.Children.Add(MikeS);
-			Rem.Children.Add(MikeM);
+			// Set up our "database" of music-related objects.
+			MusicAct LedZ = new MusicAct("Led Zeppelin");
+			Musician RobP = new Musician("Robert Plant", "Lead Singer");
+			Musician JimP = new Musician("Jimmy Page", "Lead Guitar");
+			LedZ.Members.Add(RobP);
+			LedZ.Members.Add(JimP);
+			MusicAct Rem = new MusicAct("R.E.M.");
+			Musician MikeS = new Musician("Michael Stipe", "Lead Singer");
+			Musician MikeM = new Musician("Mike Mills", "Bass Guitar");
+			Rem.Members.Add(MikeS);
+			Rem.Members.Add(MikeM);
 
 			// Populate the top level Persons.
 			_topLevel.Add(LedZ);
 			_topLevel.Add(Rem);
 
 			// Recursion test.
-			MikeS.Children.Add(Rem);
+			MikeS.Acts.Add(Rem);
 
 		}
 	}
 
 	public class Person_VM
 	{
-		private Person myPerson;
-		public Person MyPerson
+		private Musician myPerson;
+		public Musician MyPerson
 		{
 			get
 			{
@@ -64,36 +64,47 @@ namespace ViewModels
 			}
 		}
 
-		public Person_VM(Person person)
+		public Person_VM(Musician person)
 		{
 			MyPerson = person;
 		}
 	}
 
-	public class Person
+	public class Musician
 	{
 		public string Name { get; set; }
+		public string Role { get; set; }
 
-		private List<Person> _children = new List<Person>();
-		public List<Person> Children
+		private List<MusicAct> _acts = new List<MusicAct>();
+		public List<MusicAct> Acts
 		{
 			get
 			{
-				return _children;
+				return _acts;
 			}
 
 			private set
 			{
-				_children = value;
+				_acts = value;
 			}
 		}
 
-		public Person()
-		{
-			Name = "Unknown Comic";
-		}
+		public Musician() : this("Unknown Comic", "Emcee") { }
 
-		public Person(string name)
+		public Musician(string name, string role)
+		{
+			Name = name;
+			Role = role;
+		}
+	}
+
+	public class MusicAct
+	{
+		public string Name { get; set; }
+
+		public List<Musician> Members { get; set; } = new List<Musician>();
+
+		public MusicAct(string name)
 		{
 			Name = name;
 		}
