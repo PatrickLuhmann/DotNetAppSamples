@@ -10,8 +10,8 @@ namespace ViewModels
 	{
 		public string Greeting { get; private set; }
 
-		private List<MusicAct> _topLevel = new List<MusicAct>();
-		public List<MusicAct> TopLevel
+		private List<MusicAct_VM> _topLevel = new List<MusicAct_VM>();
+		public List<MusicAct_VM> TopLevel
 		{
 			get
 			{
@@ -23,50 +23,160 @@ namespace ViewModels
 			}
 		}
 
+		private List<Musician_VM> MusicianVMs = new List<Musician_VM>();
+
 		public TreeViewSample_VM()
 		{
 			Greeting = "Hello, world!";
 
 			// Set up our "database" of music-related objects.
-			MusicAct LedZ = new MusicAct("Led Zeppelin");
 			Musician RobP = new Musician("Robert Plant", "Lead Singer");
 			Musician JimP = new Musician("Jimmy Page", "Lead Guitar");
+			Musician MikeS = new Musician("Michael Stipe", "Lead Singer");
+			Musician MikeM = new Musician("Mike Mills", "Bass Guitar");
+
+			MusicAct LedZ = new MusicAct("Led Zeppelin");
 			LedZ.Members.Add(RobP);
 			LedZ.Members.Add(JimP);
 			MusicAct Rem = new MusicAct("R.E.M.");
-			Musician MikeS = new Musician("Michael Stipe", "Lead Singer");
-			Musician MikeM = new Musician("Mike Mills", "Bass Guitar");
 			Rem.Members.Add(MikeS);
 			Rem.Members.Add(MikeM);
+			MusicAct HoneyD = new MusicAct("The Honeydrippers");
+			HoneyD.Members.Add(RobP);
 
-			// Populate the top level Persons.
-			_topLevel.Add(LedZ);
-			_topLevel.Add(Rem);
-
-			// Recursion test.
+			RobP.Acts.Add(LedZ);
+			RobP.Acts.Add(HoneyD);
+			JimP.Acts.Add(LedZ);
 			MikeS.Acts.Add(Rem);
+			MikeM.Acts.Add(Rem);
 
+			//
+			// Prepare the ViewModels
+			//
+
+			// Create a VM for each musician.
+			MusicianVMs.Add(new Musician_VM(RobP));
+			MusicianVMs.Add(new Musician_VM(JimP));
+			MusicianVMs.Add(new Musician_VM(MikeS));
+			MusicianVMs.Add(new Musician_VM(MikeM));
+
+			// Create a VM for each act.
+			_topLevel.Add(new MusicAct_VM(LedZ, MusicianVMs));
+			_topLevel.Add(new MusicAct_VM(Rem, MusicianVMs));
+			_topLevel.Add(new MusicAct_VM(HoneyD, MusicianVMs));
 		}
 	}
 
-	public class Person_VM
+	public class MusicAct_VM
 	{
-		private Musician myPerson;
+		private MusicAct _theMusicAct;
+		public MusicAct TheMusicAct
+		{
+			get
+			{
+				return _theMusicAct;
+			}
+			set
+			{
+				_theMusicAct = value;
+			}
+		}
+
+		private List<Musician_VM> _theMusicians = new List<Musician_VM>();
+		public List<Musician_VM> TheMusicians
+		{
+			get
+			{
+				return _theMusicians;
+			}
+
+			set
+			{
+			}
+		}
+
+		public int NumMembers
+		{
+			get
+			{
+				return _theMusicians.Count;
+			}
+			set
+			{
+
+			}
+		}
+
+		public MusicAct_VM(MusicAct act, List<Musician_VM> musicianVms)
+		{
+			_theMusicAct = act;
+
+			// Create the musicians list.
+			if (musicianVms == null)
+			{
+				foreach (Musician m in _theMusicAct.Members)
+				{
+					Musician_VM mvm = new Musician_VM(m);
+					_theMusicians.Add(mvm);
+				}
+			}
+			else
+			{
+				foreach (Musician m in _theMusicAct.Members)
+				{
+					// Find the corresponding VM.
+					Musician_VM mvm = musicianVms.Find(vm => vm.MyPerson == m);
+
+					// Add the Musician_VM to our list.
+					_theMusicians.Add(mvm);
+
+					// Add us to the musician's list of MusicAct_VMs.
+					mvm.MyActs.Add(this);
+				}
+			}
+		}
+	}
+
+	public class Musician_VM
+	{
+		private Musician _myPerson;
 		public Musician MyPerson
 		{
 			get
 			{
-				return myPerson;
+				return _myPerson;
 			}
 			set
 			{
-				myPerson = value;
+				_myPerson = value;
 			}
 		}
 
-		public Person_VM(Musician person)
+		private List<MusicAct_VM> _myActs = new List<MusicAct_VM>();
+		public List<MusicAct_VM> MyActs
 		{
-			MyPerson = person;
+			get
+			{
+				return _myActs;
+			}
+			set
+			{
+
+			}
+		}
+
+		public Musician_VM(Musician person)
+		{
+			_myPerson = person;
+
+#if false
+			// Create the acts list.
+			foreach (MusicAct act in _myPerson.Acts)
+			{
+				MusicAct_VM mavm = new MusicAct_VM(act);
+				_myActs.Add(mavm);
+			}
+#endif
 		}
 	}
 

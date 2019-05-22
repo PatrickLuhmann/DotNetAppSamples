@@ -27,18 +27,19 @@
             <TextBlock FontWeight="Bold">Styled Music Acts</TextBlock>
             <TreeView ItemsSource="{Binding TopLevel}">
                 <TreeView.Resources>
-                    <HierarchicalDataTemplate DataType="{x:Type vms:MusicAct}" ItemsSource="{Binding Members}">
+                    <HierarchicalDataTemplate DataType="{x:Type vms:MusicAct_VM}" ItemsSource="{Binding TheMusicians}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock>
-                                <Run FontWeight="Bold" Text="{Binding Name}"/>
+                                <Run FontWeight="Bold" Text="{Binding TheMusicAct.Name}"/>
+                                <Run FontStyle="Italic" Text="{Binding NumMembers}"/>
                             </TextBlock>
                         </StackPanel>
                     </HierarchicalDataTemplate>
-                    <HierarchicalDataTemplate DataType="{x:Type vms:Musician}" ItemsSource="{Binding Acts}">
+                    <HierarchicalDataTemplate DataType="{x:Type vms:Musician_VM}" ItemsSource="{Binding MyActs}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock>
-                                <Run FontWeight="Bold" Text="{Binding Name}"/>
-                                <Run FontStyle="Italic" Text="{Binding Role}"/>
+                                <Run FontWeight="Bold" Text="{Binding MyPerson.Name}"/>
+                                <Run FontStyle="Italic" Text="{Binding MyPerson.Role}"/>
                             </TextBlock>
                         </StackPanel>
                     </HierarchicalDataTemplate>
