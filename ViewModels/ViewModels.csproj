@@ -47,6 +47,7 @@
     <Compile Include="MainWindow_VM.cs" />
     <Compile Include="Nutrition_VM.cs" />
     <Compile Include="StyleSample_VM.cs" />
+    <Compile Include="TreeViewSample_VM.cs" />
     <Compile Include="ValueConverter_VM.cs" />
   </ItemGroup>
   <ItemGroup>

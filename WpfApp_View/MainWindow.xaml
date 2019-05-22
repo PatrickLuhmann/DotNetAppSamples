@@ -27,6 +27,9 @@
                 <Button Click="clickNutritionSample_Button">Nutrition Sample</Button>
 
             </TabItem>
+            <TabItem Header="TreeView Sample">
+                <local:TreeViewSample/>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>
