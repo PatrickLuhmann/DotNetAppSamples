@@ -8,23 +8,22 @@
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             x:Name="TreeViewSampleUserControl"
-             Height="300" Width="700">
+             x:Name="TreeViewSampleUserControl">
     <UserControl.DataContext>
         <vms:TreeViewSample_VM/>
     </UserControl.DataContext>
     <Grid>
         <StackPanel>
             <TextBlock Text="{Binding Greeting}"></TextBlock>
-            <TextBlock FontWeight="Bold">Music Acts</TextBlock>
-            <TreeView ItemsSource="{Binding TopLevel}">
+            <TextBlock FontWeight="Bold">Music Acts [Source = Model classes]</TextBlock>
+            <TreeView ItemsSource="{Binding MusicActs}">
                 <TreeView.ItemTemplate>
                     <HierarchicalDataTemplate DataType="{x:Type vms:MusicAct}" ItemsSource="{Binding Members}" >
                         <TextBlock Text="{Binding Name}" />
                     </HierarchicalDataTemplate>
                 </TreeView.ItemTemplate>
             </TreeView>
-            <TextBlock FontWeight="Bold">Styled Music Acts</TextBlock>
+            <TextBlock FontWeight="Bold">Styled Music Acts [Source = ViewModel classes]</TextBlock>
             <TreeView ItemsSource="{Binding TopLevel}">
                 <TreeView.Resources>
                     <HierarchicalDataTemplate DataType="{x:Type vms:MusicAct_VM}" ItemsSource="{Binding TheMusicians}">

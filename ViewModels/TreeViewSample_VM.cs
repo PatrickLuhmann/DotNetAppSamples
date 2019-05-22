@@ -10,6 +10,9 @@ namespace ViewModels
 	{
 		public string Greeting { get; private set; }
 
+		public List<MusicAct> MusicActs { get; set; }
+		public List<Musician> Musicians { get; set; }
+
 		private List<MusicAct_VM> _topLevel = new List<MusicAct_VM>();
 		public List<MusicAct_VM> TopLevel
 		{
@@ -49,6 +52,22 @@ namespace ViewModels
 			JimP.Acts.Add(LedZ);
 			MikeS.Acts.Add(Rem);
 			MikeM.Acts.Add(Rem);
+
+			// I use VMs as list elements, but if there were a real database I would
+			// have a list for each Model class. Emulate that here.
+			MusicActs = new List<MusicAct>
+			{
+				LedZ,
+				Rem,
+				HoneyD,
+			};
+			Musicians = new List<Musician>
+			{
+				RobP,
+				JimP,
+				MikeS,
+				MikeM,
+			};
 
 			//
 			// Prepare the ViewModels
